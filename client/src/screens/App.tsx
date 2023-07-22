@@ -12,6 +12,7 @@ import Profile from './Profile';
 import NFTChat from './NFTChat';
 import Matches from './Matches';
 import AllRelationships from './AllRelationships';
+import Relationship from './Relationship';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,13 +25,26 @@ function App() {
           component={Landing}
           options={{title: 'Welcome, please connect your wallet.'}}
         />
-        <Stack.Screen name="CreateProfile" component={CreateProfile} />
+        <Stack.Screen
+          name="CreateProfile"
+          component={CreateProfile}
+          options={{title: 'Create your profile'}}
+        />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Swiper" component={Swiper} />
-        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{title: 'Choose your preferences'}}
+        />
         <Stack.Screen name="Matches" component={Matches} />
         <Stack.Screen name="NFTChat" component={NFTChat} />
-        <Stack.Screen name="AllRelationships" component={AllRelationships} />
+        <Stack.Screen name="Relationship" component={Relationship} />
+        <Stack.Screen
+          name="AllRelationships"
+          component={AllRelationships}
+          options={{title: 'All Relationships'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

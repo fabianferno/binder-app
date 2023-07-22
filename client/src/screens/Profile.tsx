@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import tw from 'twrnc';
 import {sismoCall} from '../utils/Sismo';
+import MasonryList from '@react-native-seoul/masonry-list';
 
 export default function () {
   const [loading, setLoading] = useState(false);
@@ -48,18 +49,19 @@ export default function () {
 
       <View
         style={tw`
-        flex-row
+        flex-row justify-center items-center bg-red-100 rounded-md p-2 mx-2 mb-5 h-30
       `}>
-        <Text style={tw`text-2xl mb-2 font-bold text-zinc-600`}>
-          Preferred Groups:
+        <Text style={tw`text-sm mb-2 ml-4 font-bold text-zinc-600`}>
+          Selected Preferences:
         </Text>
-        <FlatList
+        <MasonryList
           style={tw`px-2`}
+          horizontal={true}
           data={selectedPreferences}
-          renderItem={({item}) => (
-            <View style={tw`border-2 border-gray-300 rounded-md p-2 m-2`}>
-              <Text style={tw`text-2xl mb-2 font-bold text-zinc-600`}>
-                {item.name}
+          renderItem={(item: any) => (
+            <View style={tw`bg-red-600 rounded-md p-2 m-2`}>
+              <Text style={tw`text-sm mb-1 font-bold text-zinc-100`}>
+                {JSON.stringify(item.item.item.name)}
               </Text>
             </View>
           )}
@@ -71,20 +73,33 @@ export default function () {
         <FlatList
           style={tw`px-2`}
           data={dataGroups.groups}
-          renderItem={({item}) => (
-            <TouchableOpacity>
+          renderItem={(item: any) => (
+            <TouchableOpacity
+              onPress={() => {
+                if (
+                  selectedPreferences
+                    .map((item: any) => JSON.stringify(item))
+                    .includes(JSON.stringify(item))
+                ) {
+                  setSelectedPreferences(
+                    selectedPreferences.filter((e: any) => e.id !== item.id),
+                  );
+                } else {
+                  setSelectedPreferences([...selectedPreferences, item]);
+                }
+              }}>
               <View style={tw`border-2 border-gray-300 rounded-md p-2 m-2`}>
                 <Text style={tw`text-2xl mb-2 font-bold text-zinc-600`}>
-                  {item.name}
+                  {item.item.name}
                 </Text>
-                <Text>{item.description}</Text>
+                <Text>{item.item.description}</Text>
               </View>
             </TouchableOpacity>
           )}
           keyExtractor={item => item.id}
         />
       ) : (
-        <View style={tw`flex-1 items-center justify-center`}>
+        <View style={tw`flex-1 items-center justify-center mt-24`}>
           <ActivityIndicator size={150} color="#dc2626" />
         </View>
       )}

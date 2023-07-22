@@ -1627,6 +1627,29 @@
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/strings" "^5.7.0"
 
+"@flyerhq/react-native-chat-ui@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@flyerhq/react-native-chat-ui/-/react-native-chat-ui-1.4.3.tgz#1a2cbf382080ab76099ba155ad7a4014e53eb31e"
+  integrity sha512-qrk6qQbvLXQruIQcHBWbf7FEyz6Sq0E+1man740VydBcvx5DuUlCwQwS2c7FMVKsvpOwmtxxFlKXdwPbOpZtnA==
+  dependencies:
+    "@flyerhq/react-native-keyboard-accessory-view" "^2.3.3"
+    "@flyerhq/react-native-link-preview" "^1.5.2"
+    dayjs "^1.10.7"
+    react-native-image-viewing "^0.2.1"
+    react-native-parsed-text "^0.0.22"
+
+"@flyerhq/react-native-keyboard-accessory-view@^2.3.3":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@flyerhq/react-native-keyboard-accessory-view/-/react-native-keyboard-accessory-view-2.4.0.tgz#27fe52f77e2b0ee324bf74154eda79bfebba608f"
+  integrity sha512-LF2WdkMk23bTTpsXPQIyVjWttfo+6DcG0HcgE4kp+ozbVRv2Z1S+K1IRd1CR1LAuvHPnVax3DjrJqsGFTavqvA==
+
+"@flyerhq/react-native-link-preview@^1.5.2":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@flyerhq/react-native-link-preview/-/react-native-link-preview-1.6.0.tgz#c7285ab93a133328edc5d69b011822581bb4414b"
+  integrity sha512-MY2Kxlf3SzLVUAuGU2LXhDU0a2icNBWL7MDCA8BNpmKqsWI+tHjX3mHm5nGpsLweYG5wsajzBd5XS0KCXNPkJA==
+  dependencies:
+    html-entities "^2.3.2"
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -2219,6 +2242,13 @@
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.3.0.tgz#9e558170c106bbafaa1ef502bd8e6d4651012bf9"
   integrity sha512-+zDZ20NUnSWghj7Ku5aFphMzuM9JulqCW+aPXT6IfIXFbb8tzYTTOSeRFOtuekJ99ibW2fUCSsjuKNlwDIbHFg==
+
+"@react-native-seoul/masonry-list@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@react-native-seoul/masonry-list/-/masonry-list-1.4.2.tgz#0de8f3e306fa54da71aced3ba0f181568a71ce1c"
+  integrity sha512-sqpaDwSP4w94yIrUvhGknKlyN3KZDE1nfnULyiSwhmXrjbQ5c7W38a3HzKl8p9CeEfnsfdklAevnEz8vdTaxxQ==
+  dependencies:
+    dooboolab-welcome "^1.3.2"
 
 "@react-native/assets-registry@^0.72.0":
   version "0.72.0"
@@ -3892,6 +3922,11 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
+dayjs@^1.10.7:
+  version "1.11.9"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.9.tgz#9ca491933fadd0a60a2c19f6c237c03517d71d1a"
+  integrity sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==
+
 dayjs@^1.8.15:
   version "1.11.7"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
@@ -4065,6 +4100,11 @@ domutils@^3.0.1:
     dom-serializer "^2.0.0"
     domelementtype "^2.3.0"
     domhandler "^5.0.1"
+
+dooboolab-welcome@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/dooboolab-welcome/-/dooboolab-welcome-1.3.2.tgz#4928595312f0429b4ea1b485ba8767bae6acdab7"
+  integrity sha512-2NbMaIIURElxEf/UAoVUFlXrO+7n/FRhLCiQlk4fkbGRh9cJ3/f8VEMPveR9m4Ug2l2Zey+UCXjd6EcBqHJ5bw==
 
 dotenv@^16.0.3:
   version "16.0.3"
@@ -4985,6 +5025,11 @@ hmac-drbg@^1.0.1:
     hash.js "^1.0.3"
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
+
+html-entities@^2.3.2:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.4.0.tgz#edd0cee70402584c8c76cc2c0556db09d1f45061"
+  integrity sha512-igBTJcNNNhvZFRtm8uA6xMY6xYleeDwn3PeBCkDz7tHttv4F2hsDI2aPgNERWzvRcNYHNT3ymRaQzllmXj4YsQ==
 
 html-escaper@^2.0.0:
   version "2.0.2"
@@ -7244,7 +7289,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@*, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@*, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.7.x, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7359,6 +7404,11 @@ react-native-get-random-values@1.9.0:
   dependencies:
     fast-base64-decode "^1.0.0"
 
+react-native-image-viewing@^0.2.1:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-viewing/-/react-native-image-viewing-0.2.2.tgz#fb26e57d7d3d9ce4559a3af3d244387c0367242b"
+  integrity sha512-osWieG+p/d2NPbAyonOMubttajtYEYiRGQaJA54slFxZ69j1V4/dCmcrVQry47ktVKy8/qpFwCpW1eT6MH5T2Q==
+
 react-native-modal@13.0.1:
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-13.0.1.tgz#691f1e646abb96fa82c1788bf18a16d585da37cd"
@@ -7366,6 +7416,13 @@ react-native-modal@13.0.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-animatable "1.3.3"
+
+react-native-parsed-text@^0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/react-native-parsed-text/-/react-native-parsed-text-0.0.22.tgz#a23c756eaa5d6724296814755085127f9072e5f5"
+  integrity sha512-hfD83RDXZf9Fvth3DowR7j65fMnlqM9PpxZBGWkzVcUTFtqe6/yPcIoIAgrJbKn6YmtzkivmhWE2MCE4JKBXrQ==
+  dependencies:
+    prop-types "^15.7.x"
 
 react-native-redash@^18.1.0:
   version "18.1.0"

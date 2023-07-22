@@ -1,5 +1,5 @@
 const query = `query ExampleQuery($where: Group_filter) {
-    groups(where: $where) {
+    groups(where: $where, orderBy: name, orderDirection: asc) {
       id
       name
       description
