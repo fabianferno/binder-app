@@ -11,10 +11,20 @@ import tw from 'twrnc';
 import {sismoCall} from '../utils/Sismo';
 import MasonryList from '@react-native-seoul/masonry-list';
 
+import {ethers} from 'ethers';
+import {useWalletConnectModal} from '@walletconnect/modal-react-native';
+
 export default function () {
+  const {provider, address} = useWalletConnectModal();
+
   const [loading, setLoading] = useState(false);
   const [selectedPreferences, setSelectedPreferences] = useState<any>([]);
   const [dataGroups, setDataGroups] = useState<any>([]);
+
+  const web3Provider = useMemo(
+    () => (provider ? new ethers.providers.Web3Provider(provider) : undefined),
+    [provider],
+  );
 
   useEffect(() => {
     sismoCall()
