@@ -1,70 +1,78 @@
-import {Chat, MessageType} from '@flyerhq/react-native-chat-ui';
-import React, {useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import React, {useState, useMemo, useEffect} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import tw from 'twrnc';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-
-// For the testing purposes, you should probably use https://github.com/uuidjs/uuid
-const uuidv4 = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-    const r = Math.floor(Math.random() * 16);
-    const v = c === 'x' ? r : (r % 4) + 8;
-    return v.toString(16);
-  });
-};
+import {ethers} from 'ethers';
+import {useWalletConnectModal} from '@walletconnect/modal-react-native';
+import ChatWidget from '../components/Chat';
+import ERC20Abi from '../constants/Contract';
 
 export default function () {
-  const [messages, setMessages] = useState<MessageType.Any[]>([]);
-  const user = {id: '06c33e8b-e835-4736-80f4-63f44b66666c'};
+  const [loading, setLoading] = useState(true);
+  const [linkBalance, setLinkBalance] = useState(0);
+  const {provider, address} = useWalletConnectModal();
 
-  const addMessage = (message: MessageType.Any) => {
-    setMessages([message, ...messages]);
-  };
+  const web3Provider = useMemo(
+    () => (provider ? new ethers.providers.Web3Provider(provider) : undefined),
+    [provider],
+  );
 
-  const handleSendPress = (message: MessageType.PartialText) => {
-    const textMessage: MessageType.Text = {
-      author: user,
-      createdAt: Date.now(),
-      id: uuidv4(),
-      text: message.text,
-      type: 'text',
-    };
-    addMessage(textMessage);
-  };
+  useEffect(() => {
+    (async () => {
+      if (!web3Provider) {
+        return;
+      }
+
+      // Get ERC20 balance for a token address
+      try {
+        let ABI: any = ERC20Abi;
+        const tokenContract = '0x326C977E6efc84E512bB9C30f76E30c160eD06FB'; // LINK
+        const contract = new ethers.Contract(tokenContract, ABI, web3Provider);
+        const balance = await contract.balanceOf(address);
+
+        const decimals = await contract.decimals();
+        const balanceFormatted = balance.div(
+          ethers.BigNumber.from(10).pow(decimals),
+        );
+        setLinkBalance(balanceFormatted.toString());
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    })();
+  }, [address, web3Provider]);
 
   return (
-    <ScrollView>
-      <View style={tw`flex-col items-center justify-center bg-white pt-10`}>
-        <Text style={tw`text-5xl mb-5 font-bold text-red-700 ml-5`}>
-          The relationship
-        </Text>
-        <View
-          style={tw`flex-row justify-center items-center bg-red-100 rounded-md p-2 mx-2 mb-5 h-30`}>
+    <View style={tw`flex-col items-center justify-center bg-white pt-10`}>
+      <Text style={tw`text-5xl mb-5 font-bold text-red-700 ml-5`}>
+        The relationship
+      </Text>
+      <View
+        style={tw`flex-row justify-center items-center bg-red-100 rounded-md p-2 mx-2 mb-5 h-30`}>
+        <TouchableOpacity
+          onPress={() => {}}
+          style={tw`flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-xl `}>
+          <Text style={tw`text-sm text-white px-3 font-bold`}>
+            + Create a relic
+          </Text>
+        </TouchableOpacity>
+        <View style={tw`ml-5 flex-col justify-center items-start`}>
           <TouchableOpacity
             onPress={() => {}}
-            style={tw`flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-xl `}>
+            style={tw`flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-2xl `}>
             <Text style={tw`text-sm text-white px-3 font-bold`}>
-              + Create a relic
+              + Add link tokens
             </Text>
           </TouchableOpacity>
-          <View style={tw`ml-5 flex-col justify-center items-start`}>
-            <TouchableOpacity
-              onPress={() => {}}
-              style={tw`flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-2xl `}>
-              <Text style={tw`text-sm text-white px-3 font-bold`}>
-                + Add link tokens
-              </Text>
-            </TouchableOpacity>
-            <View style={tw`flex-row items-start justify-center mx-5 mb-5`}>
-              <Text style={tw`text-sm mb-1`}>Balance: </Text>
-              <Text style={tw`text-sm mb-1`}>0.1 ETH</Text>
-            </View>
+          <View style={tw`flex-row items-start justify-center mx-5 mb-5`}>
+            <Text style={tw`text-sm mb-1`}>Balance: </Text>
+            <Text style={tw`text-sm mb-1`}>
+              {loading ? 'Loading...' : linkBalance} LINK
+            </Text>
           </View>
         </View>
-        <SafeAreaProvider style={tw`flex-1 w-100 h-75`}>
-          <Chat messages={messages} onSendPress={handleSendPress} user={user} />
-        </SafeAreaProvider>
       </View>
-    </ScrollView>
+
+      <ChatWidget />
+    </View>
   );
 }

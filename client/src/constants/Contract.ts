@@ -4,6 +4,40 @@ const contractAddress = '0xdac17f958d2ee523a2206206994597c13d831ec7';
 // vitalik.eth
 const balanceAddress = '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045';
 
+const ERC20Abi: any = [
+  {
+    constant: true,
+    inputs: [],
+    name: 'decimals',
+    outputs: [
+      {
+        name: '',
+        type: 'uint8',
+      },
+    ],
+    payable: false,
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address',
+      },
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        name: 'balance',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    type: 'function',
+  },
+];
+
 const readContractAbi = [
   {
     constant: true,
@@ -77,4 +111,5 @@ export default {
   balanceAddress,
   readContractAbi,
   getFilterChangesAbi,
+  ERC20Abi,
 };
