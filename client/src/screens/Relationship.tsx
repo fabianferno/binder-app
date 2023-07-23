@@ -4,6 +4,7 @@ import tw from 'twrnc';
 import {ethers} from 'ethers';
 import {useWalletConnectModal} from '@walletconnect/modal-react-native';
 import ChatWidget from '../components/Chat';
+import {giveMeetingAttestation} from '../utils/EAS';
 // import {
 //   PushAPI_nft_chat_send,
 //   PushAPI_nft_chat_get,
@@ -19,6 +20,7 @@ export default function () {
   const [loading, setLoading] = useState(true);
   const [linkBalance, setLinkBalance] = useState(0);
   const {provider, address} = useWalletConnectModal();
+  const [attestation, setAttestation] = useState<any>({});
 
   const web3Provider = useMemo(
     () => (provider ? new ethers.providers.Web3Provider(provider) : undefined),
@@ -65,14 +67,32 @@ export default function () {
         Your relationship
       </Text>
       <View
-        style={tw`flex-row justify-center items-center bg-red-100 rounded-md p-2 mx-2 mb-5 h-30 w-100`}>
-        <TouchableOpacity
-          onPress={() => {}}
-          style={tw`flex-row justify-center items-center my-2 py-2 bg-orange-600 pr-5 rounded-xl `}>
-          <Text style={tw`text-lg text-white px-3 font-bold`}>
-            + Create a relic
-          </Text>
-        </TouchableOpacity>
+        style={tw`flex-row justify-center items-center bg-red-100 rounded-md p-2 mb-5 h-30 w-100`}>
+        <View style={tw`flex-col justify-center items-start`}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={tw`flex-row justify-center items-center py-2 my-1 bg-orange-600 pr-5 rounded-xl `}>
+            <Text style={tw`text-lg text-white px-3 font-bold`}>
+              + Create a relic
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              giveMeetingAttestation(web3Provider, true, mySigner, address)
+                .then(res => {
+                  console.log('res', res);
+                  setAttestation(res);
+                })
+                .catch(err => {
+                  console.log('err', err);
+                });
+            }}
+            style={tw`flex-row justify-center items-center py-2 my-1 bg-orange-600 pr-5 rounded-xl `}>
+            <Text style={tw`text-lg text-white px-3 font-bold`}>
+              + Meet & Attest {JSON.stringify(attestation)}
+            </Text>
+          </TouchableOpacity>
+        </View>
         <View style={tw`ml-5 flex-col justify-center items-start`}>
           <TouchableOpacity
             onPress={() => {}}
