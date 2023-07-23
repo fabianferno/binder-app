@@ -133,7 +133,7 @@ function Match() {
       </View>
       <View style={tw`flex-row justify-center w-full mt-5`}>
         <TouchableOpacity
-          style={tw`py-3 bg-red-600 rounded-2xl mb-2 mx-2`}
+          style={tw`py-3 bg-orange-600 rounded-2xl mb-2 mx-2`}
           onPress={() => swipe('left')}>
           <Text
             style={tw`text-white px-5 text-right text-lg font-bold shadow-lg`}>
@@ -141,7 +141,7 @@ function Match() {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={tw`py-3 bg-red-600 rounded-2xl mb-2 mx-2`}
+          style={tw`py-3 bg-orange-600 rounded-2xl mb-2 mx-2`}
           onPress={() => swipe('right')}>
           <Text
             style={tw`text-white px-5s text-right text-lg font-bold shadow-lg`}>

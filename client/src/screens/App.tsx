@@ -9,7 +9,6 @@ import Swiper from './Swiper';
 import Home from './Home';
 import CreateProfile from './CreateProfile';
 import Profile from './Profile';
-import NFTChat from './NFTChat';
 import Matches from './Matches';
 import AllRelationships from './AllRelationships';
 import Relationship from './Relationship';
@@ -38,7 +37,6 @@ function App() {
           options={{title: 'Choose your preferences'}}
         />
         <Stack.Screen name="Matches" component={Matches} />
-        <Stack.Screen name="NFTChat" component={NFTChat} />
         <Stack.Screen name="Relationship" component={Relationship} />
         <Stack.Screen
           name="AllRelationships"

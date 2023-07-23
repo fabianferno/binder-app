@@ -4,6 +4,15 @@ import tw from 'twrnc';
 import {ethers} from 'ethers';
 import {useWalletConnectModal} from '@walletconnect/modal-react-native';
 import ChatWidget from '../components/Chat';
+// import {
+//   PushAPI_nft_chat_send,
+//   PushAPI_nft_chat_get,
+//   PushAPI_nft_chat_create,
+//   PushAPI_nft_chat_approve,
+//   PushAPI_nft_chat_history,
+//   PushAPI_nft_chat_requests,
+//   PushAPI_nft_chat_chats,
+// } from '../utils/Push';
 import ERC20Abi from '../constants/Contract';
 
 export default function () {
@@ -16,10 +25,19 @@ export default function () {
     [provider],
   );
 
+  const mySigner = web3Provider.getSigner();
+
   useEffect(() => {
     (async () => {
       if (!web3Provider) {
         return;
+      } else {
+        // let push_data: any = PushAPI_nft_chat_requests(
+        //   address,
+        //   'staging',
+        //   mySigner,
+        // );
+        // console.log('push_data', push_data);
       }
 
       // Get ERC20 balance for a token address
@@ -42,23 +60,23 @@ export default function () {
   }, [address, web3Provider]);
 
   return (
-    <View style={tw`flex-col items-center justify-center bg-white pt-10`}>
-      <Text style={tw`text-5xl mb-5 font-bold text-red-700 ml-5`}>
-        The relationship
+    <View style={tw`flex-col items-start justify-start bg-white pt-10`}>
+      <Text style={tw`text-4xl mb-5 font-bold text-red-700 ml-5`}>
+        Your relationship
       </Text>
       <View
-        style={tw`flex-row justify-center items-center bg-red-100 rounded-md p-2 mx-2 mb-5 h-30`}>
+        style={tw`flex-row justify-center items-center bg-red-100 rounded-md p-2 mx-2 mb-5 h-30 w-100`}>
         <TouchableOpacity
           onPress={() => {}}
-          style={tw`flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-xl `}>
-          <Text style={tw`text-sm text-white px-3 font-bold`}>
+          style={tw`flex-row justify-center items-center my-2 py-2 bg-orange-600 pr-5 rounded-xl `}>
+          <Text style={tw`text-lg text-white px-3 font-bold`}>
             + Create a relic
           </Text>
         </TouchableOpacity>
         <View style={tw`ml-5 flex-col justify-center items-start`}>
           <TouchableOpacity
             onPress={() => {}}
-            style={tw`flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-2xl `}>
+            style={tw`flex-row justify-center items-center my-2 py-2 bg-orange-600 pr-5 rounded-2xl `}>
             <Text style={tw`text-sm text-white px-3 font-bold`}>
               + Add link tokens
             </Text>

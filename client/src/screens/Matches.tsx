@@ -42,7 +42,7 @@ export default function () {
             return (
               <View
                 key={index}
-                style={tw`flex-1 flex-row justify-center items-center my-2 py-2 bg-red-600 pr-5 rounded-2xl `}>
+                style={tw`flex-1 flex-row justify-center items-center my-2 py-2 bg-orange-600 pr-5 rounded-2xl `}>
                 <Image
                   style={tw`w-25 h-20 rounded-2xl shadow-xl`}
                   source={{

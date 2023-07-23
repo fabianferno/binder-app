@@ -90,7 +90,7 @@ function Landing(props: any) {
           {isConnected ? (
             <View>
               <TouchableOpacity
-                style={tw` bg-red-600 px-4 py-3 rounded-xl mb-2`}
+                style={tw` bg-orange-600 px-4 py-3 rounded-xl mb-2`}
                 onPress={() => {
                   props.navigation.navigate('Home');
                 }}>
@@ -102,7 +102,7 @@ function Landing(props: any) {
               <TouchableOpacity
                 style={tw`pb-3 mb-2`}
                 onPress={handleButtonPress}>
-                <Text style={tw`text-zinc text-center text-sm underline`}>
+                <Text style={tw`text-zinc-700 text-center text-sm underline`}>
                   {isConnected
                     ? 'Or disconnect this wallet.'
                     : 'Connect Wallet'}
@@ -112,7 +112,7 @@ function Landing(props: any) {
           ) : (
             <View style={styles.centerContainer}>
               <TouchableOpacity
-                style={tw` bg-red-600 px-4 py-3 rounded-xl mb-2`}
+                style={tw` bg-orange-600 px-4 py-3 rounded-xl mb-2`}
                 onPress={handleButtonPress}>
                 <Text style={tw`text-white text-3xl font-bold`}>
                   {isConnected ? 'Disconnect' : 'Connect Wallet'}
